@@ -1,10 +1,17 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToMany,
+  JoinColumn,
+} from 'typeorm';
 import { IsString, IsNotEmpty } from 'class-validator';
 import { PickType, PartialType } from '@nestjs/swagger';
+import { RolesEntity } from '@src/roles/roles.entity';
 // import { Transform } from 'class-transformer';
 
-@Entity()
-export class User {
+@Entity({ name: 'user' })
+export class UserEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -21,7 +28,13 @@ export class User {
   @Column()
   // @Transform(({ value }) => value || true) // Assign default value if undefined
   available: boolean = true; // Default value without the need for @Transform
+
+  @ManyToMany(() => RolesEntity, (role: RolesEntity) => role.users)
+  @JoinColumn()
+  roles: RolesEntity[];
 }
 
-export class FindByIdDto extends PartialType(PickType(User, ['id'])) {}
-export class FindByNameDto extends PartialType(PickType(User, ['name'])) {}
+export class FindByIdDto extends PartialType(PickType(UserEntity, ['id'])) {}
+export class FindByNameDto extends PartialType(
+  PickType(UserEntity, ['name']),
+) {}

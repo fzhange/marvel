@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { APP_NAME, PORT } from './foundation/constant/index.constant';
+import { APP_NAME, PORT } from '@src/foundation/constant/index.constant';
 import { Logger } from '@nestjs/common';
 
 async function bootstrap() {

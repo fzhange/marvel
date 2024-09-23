@@ -1,6 +1,6 @@
 import { Module, Global } from '@nestjs/common';
 import { DataSource } from 'typeorm';
-import { DATA_SOURCE } from '../foundation/constant/index.constant';
+import { DATA_SOURCE } from '@src/foundation/constant/index.constant';
 
 /**
  * The @Global() decorator makes the module global-scoped. Global modules should be registered only once, generally by the root or core module.

@@ -8,7 +8,7 @@ import { JwtService } from '@nestjs/jwt';
 import {
   JWT_CONFIG_INFO,
   IS_PUBLIC_KEY,
-} from '../foundation/constant/index.constant';
+} from '@src/foundation/constant/index.constant';
 import { Request } from 'express';
 import { Reflector } from '@nestjs/core';
 

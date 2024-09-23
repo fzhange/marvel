@@ -2,19 +2,19 @@ import { Module } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { UsersController } from './users.controller';
 import { DataSource } from 'typeorm';
-import { User } from './user.entity';
-// import { DatabaseModule } from '../database/database.module';
+import { UserEntity } from './user.entity';
 import {
   DATA_SOURCE,
   USER_REPOSITORY,
-} from '../foundation/constant/index.constant';
+} from '@src/foundation/constant/index.constant';
 
 @Module({
   imports: [],
   providers: [
     {
       provide: USER_REPOSITORY,
-      useFactory: (dataSource: DataSource) => dataSource.getRepository(User),
+      useFactory: (dataSource: DataSource) =>
+        dataSource.getRepository(UserEntity),
       inject: [DATA_SOURCE],
     },
     UsersService,

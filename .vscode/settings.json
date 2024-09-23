@@ -1,6 +1,9 @@
 {
   "editor.formatOnSave": true,
-  "cSpell.words": ["metatype"],
+  "cSpell.words": [
+    "metatype",
+    "permisssions"
+  ],
   "editor.defaultFormatter": "dbaeumer.vscode-eslint",
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
