@@ -10,7 +10,7 @@ export class PermissionEntity {
   @Column({ unique: true })
   @IsString()
   @IsNotEmpty()
-  permission: string;
+  permissionName: string;
 
   @ManyToMany(() => RolesEntity, (role: RolesEntity) => role.users)
   roles: RolesEntity[];

@@ -1,6 +1,6 @@
 import { Controller, Post, Body } from '@nestjs/common';
 import { UserEntity, FindByIdDto, FindByNameDto } from './user.entity';
-import { ValidationPipe } from './validation.pipe';
+import { ValidationPipe } from '@src/foundation/pipes/index';
 import { UsersService } from './users.service';
 
 @Controller('users')
@@ -8,9 +8,8 @@ export class UsersController {
   constructor(private usersService: UsersService) {}
 
   @Post('/save')
-  async save(@Body(new ValidationPipe()) user: UserEntity) {
-    user.available = true;
-    return this.usersService.save(user);
+  async save(@Body(new ValidationPipe()) users: UserEntity[]) {
+    return this.usersService.save(users);
   }
 
   @Post('/findAll')
@@ -30,5 +29,10 @@ export class UsersController {
     @Body(new ValidationPipe()) findByNameDto: FindByNameDto,
   ): Promise<UserEntity> {
     return this.usersService.findOneByName(findByNameDto.name);
+  }
+
+  @Post('/update')
+  async update(@Body(new ValidationPipe()) user: UserEntity) {
+    return this.usersService.update(user);
   }
 }

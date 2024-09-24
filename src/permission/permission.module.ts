@@ -6,6 +6,7 @@ import {
 } from '@src/foundation/constant/index.constant';
 import { DataSource } from 'typeorm';
 import { PermissionEntity } from './permission.entity';
+import { PermissionController } from './permission.controller';
 
 @Module({
   providers: [
@@ -17,5 +18,6 @@ import { PermissionEntity } from './permission.entity';
     },
     PermissionService,
   ],
+  controllers: [PermissionController],
 })
 export class PermissionModule {}

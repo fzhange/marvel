@@ -6,6 +6,7 @@ import {
 } from '@src/foundation/constant/index.constant';
 import { DataSource } from 'typeorm';
 import { RolesEntity } from './roles.entity';
+import { RolesController } from './roles.controller';
 
 @Module({
   providers: [
@@ -17,5 +18,6 @@ import { RolesEntity } from './roles.entity';
     },
     RolesService,
   ],
+  controllers: [RolesController],
 })
 export class RolesModule {}

@@ -7,7 +7,7 @@ import { JwtModule } from '@nestjs/jwt';
     JwtModule.register({
       global: true, // we don't need to import the JwtModule anywhere else in our application.
       secret: JWT_CONFIG_INFO.secret,
-      signOptions: { expiresIn: '60s' },
+      signOptions: { expiresIn: '7d' },
     }),
   ],
   providers: [],

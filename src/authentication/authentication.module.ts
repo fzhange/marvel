@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { AuthenticationController } from './authentication.controller';
 import { APP_GUARD } from '@nestjs/core';
 import { AuthenticationService } from './authentication.service';
-import { UsersModule } from '../users/users.module';
+import { UsersModule } from '@src/users/users.module';
 import { AuthenticationGuard } from './authentication.guard';
 
 @Module({

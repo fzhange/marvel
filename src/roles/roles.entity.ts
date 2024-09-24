@@ -1,4 +1,10 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToMany } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToMany,
+  JoinTable,
+} from 'typeorm';
 import { IsString, IsNotEmpty } from 'class-validator';
 import { UserEntity } from '@src/users/user.entity';
 import { PermissionEntity } from '@src/permission/permission.entity';
@@ -11,7 +17,7 @@ export class RolesEntity {
   @Column({ unique: true })
   @IsString()
   @IsNotEmpty()
-  role: string;
+  roleName: string;
 
   @ManyToMany(() => UserEntity, (user: UserEntity) => user.roles)
   users: UserEntity[];
@@ -19,6 +25,12 @@ export class RolesEntity {
   @ManyToMany(
     () => PermissionEntity,
     (permissionEntity: PermissionEntity) => permissionEntity.roles,
+    {
+      cascade: true,
+    },
   )
+  @JoinTable({
+    name: 'roles_permisssions',
+  })
   permisssions: PermissionEntity[];
 }

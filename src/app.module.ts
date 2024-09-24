@@ -7,6 +7,7 @@ import { DatabaseModule } from './database/database.module';
 import { FoundationModule } from './foundation/foundation.module';
 import { RolesModule } from './roles/roles.module';
 import { PermissionModule } from './permission/permission.module';
+import { MenusModule } from './menus/menus.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { PermissionModule } from './permission/permission.module';
     UsersModule,
     FoundationModule,
     PermissionModule,
+    MenusModule,
   ],
   controllers: [AppController],
   providers: [AppService],
