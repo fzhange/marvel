@@ -34,6 +34,12 @@ export class UsersService {
     return this.userRepository.save(users);
   }
 
+  /**
+   * TypeORM provides a transactional entity manager to ensure that all queries (like save, update, delete, etc.)
+   * are executed on the same transactional connection. If you use the global entity manager or repository,
+   * those operations will be performed outside of the transaction context and on a different connection,
+   * defeating the purpose of the transaction.
+   */
   async update(user: UserEntity) {
     console.log('user: ', user);
     return this.dataSource.transaction(async (transactionalEntityManager) => {
